@@ -3,13 +3,13 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Configuration config = Configuration.getInstance();
-        config.setWordSeparator(" ");  // Set the word separator
+        config.setWordSeparator(" ");
 
-        // Generate a random number between 1 and 100 as the word count
+
         int randomWordCount = new Random().nextInt(100) + 1;
         StringBuilder randomText = new StringBuilder();
 
-        // Generate random characters for the text
+
         for (int i = 0; i < randomWordCount; i++) {
             int wordLength = new Random().nextInt(10) + 1;  // Random word length between 1 and 10
             for (int j = 0; j < wordLength; j++) {
@@ -23,7 +23,7 @@ public class Main {
 
         System.out.println("Random text with spaces: " + randomText.toString());
 
-        // Choose a counting strategy (SimpleWordCountStrategy or CharacterCountStrategy)
+
         WordCountStrategy wordCountStrategy = new SimpleWordCountStrategy();
 
         int wordCount = wordCountStrategy.countWords(randomText.toString());

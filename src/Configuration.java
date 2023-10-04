@@ -2,7 +2,7 @@ class Configuration {
     private static Configuration instance;
     private String wordSeparator = " ";
 
-    private Configuration() {}  // Private constructor to prevent external instantiation
+    private Configuration() {}
 
     public static Configuration getInstance() {
         if (instance == null) {
