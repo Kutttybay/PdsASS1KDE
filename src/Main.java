@@ -1,27 +1,30 @@
 import java.util.Random;
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Configuration config = Configuration.getInstance();
         config.setWordSeparator(" ");  // Set the word separator
 
-        String text = "This is a simple example of a text processing application.";
-
-        // Choose a counting strategy (SimpleWordCountStrategy or CharacterCountStrategy)
-        WordCountStrategy wordCountStrategy = new SimpleWordCountStrategy();
-
-        // Generate a random number between 1 and 100 as the text length
-        int randomTextLength = new Random().nextInt(100) + 1;
+        // Generate a random number between 1 and 100 as the word count
+        int randomWordCount = new Random().nextInt(100) + 1;
         StringBuilder randomText = new StringBuilder();
 
         // Generate random characters for the text
-        for (int i = 0; i < randomTextLength; i++) {
-            char randomChar = (char) (new Random().nextInt(26) + 'a');
-            randomText.append(randomChar);
+        for (int i = 0; i < randomWordCount; i++) {
+            int wordLength = new Random().nextInt(10) + 1;  // Random word length between 1 and 10
+            for (int j = 0; j < wordLength; j++) {
+                char randomChar = (char) (new Random().nextInt(26) + 'a');
+                randomText.append(randomChar);
+            }
+            if (i < randomWordCount - 1) {
+                randomText.append(config.getWordSeparator());
+            }
         }
 
-        System.out.println("Random text: " + randomText.toString());
+        System.out.println("Random text with spaces: " + randomText.toString());
+
+        // Choose a counting strategy (SimpleWordCountStrategy or CharacterCountStrategy)
+        WordCountStrategy wordCountStrategy = new SimpleWordCountStrategy();
 
         int wordCount = wordCountStrategy.countWords(randomText.toString());
         System.out.println("Word count: " + wordCount);
